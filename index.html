@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cadastro de Pessoas</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <header>
+            <h1>Cadastro de Pessoas</h1>
+            <button id="btnAdd" onclick="showForm()">Incluir</button>
+        </header>
+        <div id="cadastroForm" class="modal">
+            <div class="modal-content">
+                <h2>Formulário de Cadastro</h2>
+                <form id="formcadastro">
+                    <input type="hidden" id="index" name="index">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    <label for="phone">Telefone:</label>
+                    <input type="text" id="phone" name="phone" required>
+                    <button type="button" onclick="savePerson()" id="btnsubmit">Salvar</button>
+                </form>
+                <button id="btncancel" onclick="closeForm()">Cancelar</button>
+            </div>
+        </div>
+        <table id="peopleTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody> <!-- vai ser incluido no js --> </tbody>
+        </table>
+        <script src="script.js"></script>
+    </body>
+</html>
