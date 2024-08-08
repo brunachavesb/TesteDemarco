@@ -27,6 +27,16 @@
                 <button id="btncancel" onclick="closeForm()">Cancelar</button>
             </div>
         </div>
+        <div id="deleteConfirm" class="modal">
+            <div class="modal-content">
+                <h2>Confirmar Exclusão</h2>
+                <p>Tem certeza de que deseja deletar este contato?</p>
+                <div class="modal-buttons">
+                    <button class="modal-button delete-button" id="btnConfirmDelete" onclick="confirmDelete()">Sim, deletar</button>
+                    <button class="modal-button" onclick="closeDeleteConfirm()">Cancelar</button>
+                </div>
+            </div>
+        </div>
         <table id="peopleTable">
             <thead>
                 <tr>

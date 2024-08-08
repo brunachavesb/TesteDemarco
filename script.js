@@ -6,6 +6,7 @@ let people = [
     }
 ]
 let editIndex = -1
+let deleteIndex = -1
 
 function showForm(person = null) {
     document.getElementById("cadastroForm").style.display = 'block'
@@ -68,6 +69,22 @@ function editPerson(index) {
     showForm(person)
 }
 
+function showDeleteConfirm(index) {
+    deleteIndex = index
+    document.getElementById("deleteConfirm").style.display = 'block'
+}
+
+function closeDeleteConfirm() {
+    document.getElementById("deleteConfirm").style.display = 'none'
+}
+
+function confirmDelete() {
+    if (deleteIndex !== -1) {
+        deletePerson(deleteIndex)
+        closeDeleteConfirm()
+    }
+}
+
 function deletePerson(index) {
     people.splice(index, 1)
     renderTable()
@@ -75,10 +92,9 @@ function deletePerson(index) {
 
 function renderTable() {
     const table = document.getElementById("peopleTable").getElementsByTagName('tbody')[0]
-    const addButtonHeader = document.getElementById("btnAdd")
     table.innerHTML = ''
     
-    addButtonHeader.style.display = 'block'
+
     people.forEach((person, index) => {
         const row = table.insertRow()
         row.insertCell(0).innerText = index + 1
@@ -86,7 +102,7 @@ function renderTable() {
         row.insertCell(2).innerText = person.email
         row.insertCell(3).innerText = person.phone
         const actionCell = row.insertCell(4)
-        actionCell.innerHTML = `<button id="edit" onclick="editPerson(${index})">Editar</button> <button id="delete" onclick="deletePerson(${index})">Deletar</button>`
+        actionCell.innerHTML = `<button id="edit" onclick="editPerson(${index})">Editar</button> <button class="delete-button" onclick="showDeleteConfirm(${index})">Deletar</button>`;
     })
     
 }
